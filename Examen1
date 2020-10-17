@@ -1,0 +1,28 @@
+float v;
+
+void setup() {
+ Serial.begin (9600);
+pinMode (A1, INPUT);
+pinMode (A2, INPUT);
+
+}
+
+void loop() {
+  float vt = analogRead (A1);
+  float vd = analogRead (A2);
+  float voltajet = vt * (5.0 / 1023.0);
+  float voltajed = vd * (5.0 / 1023.0);
+  float t = voltajet / .0171;
+
+ float vfin = voltajed - voltajet;
+  
+   Serial.print("Temperatura = ");
+   Serial.print (t);
+   Serial.println (" C");
+   Serial.print("Voltaje = ");
+   Serial.print (vfin);
+   Serial.println (" V");
+ 
+
+   delay(3000);
+}
