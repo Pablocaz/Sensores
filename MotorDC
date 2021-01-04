@@ -1,0 +1,49 @@
+#define E1 8
+#define I1 10
+#define I2 9
+#define E2 7
+#define I3 6
+#define I4 5
+
+void setup()
+   {
+          pinMode(A0, INPUT);
+          pinMode(5, OUTPUT);
+         pinMode(6, OUTPUT);
+        pinMode(7, OUTPUT);
+          pinMode(8, OUTPUT);
+         pinMode(9, OUTPUT);
+        pinMode(10, OUTPUT);
+   }
+void loop()
+   {
+          int Value;
+          Value = analogRead(A0);
+
+          Value = map(Value, 0, 1023, 0, 250);
+        digitalWrite(E2, HIGH);
+        analogWrite(I4, 0);
+        analogWrite(I3, Value);
+          if(Value<130 && Value>120)
+        {
+            digitalWrite(E1, LOW);
+        }
+        else
+        {
+            if(Value<124)
+            {
+                digitalWrite(E1, HIGH);
+                analogWrite(I1, Value+250);
+                analogWrite(I2, 0);
+            }
+              else
+              {
+                  if(Value>124)
+                {
+                    digitalWrite(E1, HIGH);
+                      analogWrite(I1, 0);
+                      analogWrite(I2, Value);
+                  }
+            }
+        }
+    }
